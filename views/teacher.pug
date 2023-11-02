@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1  Kondru Sunil Kumar
+  
+  .container-fluid
+    .row
+      -
+        let results = [
+          { Teacher_address:'1102 N walnut', Teacher_subject:'English',Teacher_hours:4 },
+          { Teacher_address:'218 coldenhall', Teacher_subject:'Science',Teacher_hours:3 },
+          { Teacher_address:'415 N mulberry', Teacher_subject:'Maths',Teacher_hours:8 }
+        ]
+    each item, index in results
+        .col-sm-2
+            h3 Teacher
+            p #{item.Teacher_address}, #{item.Teacher_subject},#{item.Teacher_hours}
+
+  a(href='http://localhost:3000/') Link to Index
+   
+   script.
+     function buy(x) {
+      alert(`You purchased item ${x}`);
+     }

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Kondru Sunil Kumar
+
+    - var image_names = ['t1.jpg', 't2.jpg', 't3.jpg', 't4.jpg', 't5.jpg']
+
+  - for (let i = 0; i < 3; i++) {
+    - var randomIndex = Math.floor(Math.random() * 5);
+    - let imagename = image_names[randomIndex];
+    img(src="/images/"+imagename, alt=`Image ${randomIndex + 1}`, height='300', width='300')
+  -}
