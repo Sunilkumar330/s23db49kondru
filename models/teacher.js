@@ -1,14 +1,14 @@
 const mongoose = require("mongoose")
 const teacherSchema = mongoose.Schema({
-   address:{
+   Teacher_address:{
     type:String,
     required:true
    },
-   subject:{
+   Teacher_subject:{
     type:String,
     required:true
    },
-   hours:{
+   Teacher_hours:{
     type:Number,
     required:true
    }

@@ -64,7 +64,7 @@ async function recreateDB(){
   // Delete everything
   await teacher.deleteMany();
   let instance1 = new 
-  teacher({address:'1102 N walnut', subject:'English',hours:4});
+  teacher({Teacher_address:'1102 N walnut', Teacher_subject:'English',Teacher_hours:4});
   await instance1.save();
   //instance1.save( function(err,doc) {
   //if(err) return console.error(err);
@@ -72,7 +72,7 @@ async function recreateDB(){
   //});
  
   let instance2 = new 
-  teacher({address:'218 coldenhall', subject:'Science',hours:3});
+  teacher({Teacher_address:'218 coldenhall', Teacher_subject:'Science',Teacher_hours:3});
   await instance2.save();
   //instance1.save( function(err,doc) {
   //if(err) return console.error(err);
@@ -80,7 +80,7 @@ async function recreateDB(){
   //});
  
   let instance3 = new 
-  teacher({address:'415 N mulberry', subject:'Maths',hours:8 });
+  teacher({Teacher_address:'415 N mulberry', Teacher_subject:'Maths',Teacher_hours:8 });
   await instance3.save();
   //instance1.save( function(err,doc) {
   //if(err) return console.error(err);
