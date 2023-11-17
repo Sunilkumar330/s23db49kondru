@@ -1,24 +1,22 @@
 extends layout
 
 block content
-  h1  Kondru Sunil Kumar
-  
-  .container-fluid
-    .row
-      -
-        let results = [
-          { Teacher_address:'1102 N walnut', Teacher_subject:'English',Teacher_hours:4 },
-          { Teacher_address:'218 coldenhall', Teacher_subject:'Science',Teacher_hours:3 },
-          { Teacher_address:'415 N mulberry', Teacher_subject:'Maths',Teacher_hours:8 }
-        ]
-    each item, index in results
-        .col-sm-2
-            h3 Teacher
-            p #{item.Teacher_address}, #{item.Teacher_subject},#{item.Teacher_hours}
+  h1= title
+  - var results = [{ Teacher_address: '1102 N walnut', Teacher_subject: 'English', Teacher_hours: 4 }, { Teacher_address: '218 coldenhall', Teacher_subject: 'Science', Teacher_hours: 3 },{Teacher_address: '415 N mulberry', Teacher_subject: 'Maths', Teacher_hours: 8 }]
 
-  a(href='http://localhost:3000/') Link to Index
-   
-   script.
-     function buy(x) {
-      alert(`You purchased item ${x}`);
-     }
+  div(class="container-fluid mt-3")
+    div(class="row m-1")
+      each result, index in results
+        - let destination = `/teacher/update?id=${index}`
+        div(class="col-sm-2", onclick=`buy(${index})`)
+          | #{result.Teacher_address}, #{result.Teacher_subject}, #{result.Teacher_hours}
+          button.btn(class="btn-primary ml-1", onclick=`dispatch('${destination}')`) Update
+
+  script.
+    function buy(a) {
+      alert(`You purchased Item ${a + 1}`);
+    }
+
+    function dispatch(path) {
+      window.location.href = path;
+    }

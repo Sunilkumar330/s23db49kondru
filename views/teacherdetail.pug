@@ -1,0 +1,21 @@
+extends layout
+
+block content
+ h1= title
+ - let teacherid = toShow._id
+ - let Teacheraddress = toShow.Teacher_address
+ - let Teachersubject = toShow.Teacher_subject
+ - let Teacherhours = toShow.Teacher_hours
+ div
+ div.row
+ div(class='teacherAttr mr-3') teacher ID is:
+ div #{teacherid}
+ div.row
+ div(class='teacherAttr mr-3') teacher Type is:
+ div #{Teacheraddress}
+ div.row
+ div(class='teacherAttr mr-3') teacher Size is:
+ div #{Teachersubject}
+ div.row
+ div(class='teacherAttr mr-3') teacher Cost is:
+ div #{Teacherhours}

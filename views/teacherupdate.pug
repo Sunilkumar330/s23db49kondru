@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h1= title
+  - let teacherid = toShow._id
+  - let Teacheraddress = toShow.Teacher_address
+  - let Teachersubject = toShow.Teacher_subject
+  - let Teacherhours = toShow.Teacher_hours
+
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{teacherid}
+    - let actionid = "/resource/teacher/" + teacherid
+    form(id='teacherForm', action=actionid, method="PUT")
+      div.form-group
+        label.teacherAttr(for='Teacher_address') teacher Teacher_address
+        input#Teacher_address(type='text', name='Teacher_address', value=Teacheraddress)
+      div.form-group
+        label.teacherAttr(for='Teacher_subject') teacher Teacher_subject
+        input#Teacher_subject(type='text', name='Teacher_subject', value=Teachersubject)
+      div.form-group
+        label.teacherAttr(for='Teacher_hours') teacher Teacher_hours
+        input#Teacher_hours(type='number', name='Teacher_hours', value=Teacherhours)
+      input(type="submit")
+    script.
+      document.forms['teacherForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show the user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        })
+        .then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        })
+        .then((body) => {
+          alert("Update succeeded");
+          // TODO handle body
+        })
+        .catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error);
+        });
+      });
